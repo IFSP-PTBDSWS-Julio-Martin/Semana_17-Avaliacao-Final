@@ -1,26 +1,46 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Login{% endblock %}
-
 {% block page_content %}
-<div class="row justify-content-center">
-    <div class="col-md-4">
-        <div class="card p-4 shadow-sm">
-            <h2 class="mb-4">Login:</h2>
-            <form method="POST">
-                {{ form.hidden_tag() }}
-                <div class="form-group">
-                    {{ form.email.label }}
-                    {{ form.email(class="form-control") }}
-                </div>
-                <div class="form-group">
-                    {{ form.password.label }}
-                    {{ form.password(class="form-control") }}
-                </div>
-                {{ form.submit(class="btn btn-primary") }}
-            </form>
-        </div>
+
+<h3>Cadastre o novo Aluno:</h3>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.nome.label }}
+        {{ form.nome(class="form-control") }}
     </div>
-</div>
+
+    <div class="form-group mt-2">
+        {{ form.disciplina.label }}
+        {{ form.disciplina(class="form-control") }}
+    </div>
+
+    <button class="btn btn-primary mt-3">{{ form.submit.label.text }}</button>
+</form>
+
+<hr>
+
+<h2>Relação de alunos cadastrados</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Disciplina</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for aluno in lista %}
+        <tr>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.disciplina.nome }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
