@@ -55,23 +55,14 @@ def index():
         current_time=current_time
     )
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/alunos', methods=['GET', 'POST'])
+def alunos():
+    return render_template('alunos.html')
+
+@app.route('/ocorrencias')
+def ocorrencia():
     current_time = datetime.utcnow()
-    form = LoginForm()
-    if form.validate_on_submit():
-        session['email'] = form.email.data
-        flash(f'Você entrou com sucesso como {session["email"]}!')
-        return redirect(url_for('index'))
-    return render_template('login.html', form=form, current_time=current_time)
-
-@app.route('/user/<nome>')
-def user(nome):
-    return render_template('user.html', nome=nome)
-
-@app.route('/rotainexistente')
-def erro():
-    return render_template('404.html')
+    return render_template('ocorrencias.html', current_time=current_time)
 
 if __name__ == "__main__":
     app.run(debug=True)
