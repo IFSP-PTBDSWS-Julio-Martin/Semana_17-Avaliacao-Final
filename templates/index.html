@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Home{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>
+        Olá, {% if nome and sobrenome %}{{ nome }} {{ sobrenome }}{% else %}Estranho{% endif %}!
+    </h1>
+</div>
+
+<p>A sua Instituição de ensino é {{ instituicao if instituicao else 'None' }}</p>
+<p>Está cursando a disciplina de {{ disciplina if disciplina else 'None' }}</p>
+<p>O IP do computador remoto é {{ ip_address if ip_address else 'None' }}</p>
+<p>O host da aplicação é {{ host if host else 'None' }}</p>
+
+<hr>
+
+{{ wtf.quick_form(form) }}
+
+<p>The local date and time is {{ current_time.strftime('%B %d, %Y %I:%M %p') }}.</p>
+<p>That was a few seconds ago.</p>
+{% endblock %}
