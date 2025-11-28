@@ -19,16 +19,15 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- O texto no cabeçalho da página -->
-            <a class="navbar-brand" href="/">Avaliação contínua: Aula 050.B</a>
+            <a class="navbar-brand" href="/">Avaliação semestral</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                {% if not session.get('email') %}
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
-                {% else %}
-                    <li><a href="#">Bem-vindo, {{ session.get('email') }}</a></li>
-                {% endif %}
+                <li><a href="/ocorrencias">Cadastro de Professores</a></li>
+                <li><a href="/ocorrencias">Cadastro de Disciplinas</a></li>
+                <li><a href="/alunos">Cadastro de Alunos</a></li>
+                <li><a href="/ocorrencias">Cadastro de Cursos</a></li>
+                <li><a href="/ocorrencias">Cadastro de Ocorrências</a></li>
             </ul>
         </div>
     </div>
